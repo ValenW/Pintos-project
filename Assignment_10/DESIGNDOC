@@ -1,0 +1,48 @@
+			+—————————————————————————————————+
+			|           SE223           	  |
+			|   Assignment 10: System call    |
+			|       DESIGN DOCUMENT      	  |
+			+—————————————————————————————————+
+				   
+---- Information ----
+
+>> Fill in the name and email address of you.
+
+王文茏 <wwl0816@qq.com>
+
+---- PRELIMINARIES ----
+
+>> If you have any preliminary comments on your submission, notes for the
+>> TAs, or extra credit, please give them here.
+
+>> Please cite any offline or online sources you consulted while
+>> preparing your submission, other than the Pintos documentation, course
+>> text, lecture notes, and course staff.
+
+			     SYSTEM CALLS
+			  ==================
+
+
+---- DATA STRUCTURES ----
+
+>> A1: Copy here the declaration of each new or changed `struct' or
+>> `struct' member, global or static variable, `typedef', or
+>> enumeration.  Identify the purpose of each in 25 words or less.
+>>  If none data struct is new, just skip this.
+
+---- ALGORITHMS ----
+
+>> A2: Briefly describe the implementation of the "wait" system call
+>> and how it interacts with process termination.
+通过调用process_wait来实现。而process_wait则是在确保参数正确，存在这个线程
+的时候，通过对该线程的being_wait信号量进行down操作来实现等待。而该型号量是
+在process_exit函数中进行up操作，也就是说如果线程没有退出的话，该程序会一直
+处于挂起状态，通过这来实现对线程的等待。
+
+>> A3: The "exec" system call returns -1 if loading the new executable
+>> fails, so it cannot return before the new executable has completed
+>> loading.  How does the code ensure this?
+通过信号量wait_child_load来确保主进程会在线程load后才会返回。
+在_exec函数中，在process_execute (cmd_line)之后有对 wait_child_load这个信号量的 down操作，
+而对这一信号量的up操作只有在函数start_process中才会进行，另外这一信号量到初始值被设置为0，
+这些就保证了主函数不会在子进程开始之前返回。 

@@ -1,0 +1,39 @@
+			+—————————————————————————————————+
+			|           SE223           	  |
+			|    Assignment 11: BufferCache   |
+			|       DESIGN DOCUMENT      	  |
+			+—————————————————————————————————+
+				   
+---- Information ----
+
+>> Fill in the name and email address of you.
+
+FirstName LastName <email@domain.example>
+
+---- PRELIMINARIES ----
+
+>> If you have any preliminary comments on your submission, notes for the
+>> TAs, or extra credit, please give them here.
+
+>> Please cite any offline or online sources you consulted while
+>> preparing your submission, other than the Pintos documentation, course
+>> text, lecture notes, and course staff.
+
+			     Buffer Cache
+			  ==================
+
+---- DATA STRUCTURES ----
+
+>> A1: Copy here the declaration of each new or changed `struct' or
+>> `struct' member, global or static variable, `typedef', or
+>> enumeration.  Identify the purpose of each in 25 words or less.
+
+
+---- ALGORITHMS ----
+
+>> A2: Describe how your cache replacement algorithm chooses a cache
+>> block to evict.
+
+>> A3: Describe your implementation of write-behind.
+
+

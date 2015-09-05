@@ -1,0 +1,41 @@
+			+----------------------------+
+			|           SE223            |
+			| Assignment 1: Introduction |
+			|       DESIGN DOCUMENT      |
+			+----------------------------+
+				   
+---- Information ----
+
+>> Fill in the name and email address of you.
+
+FirstName LastName <email@domain.example>
+
+---- PRELIMINARIES ----
+
+>> If you have any preliminary comments on your submission, notes for the
+>> TAs, or extra credit, please give them here.
+
+>> Please cite any offline or online sources you consulted while
+>> preparing your submission, other than the Pintos documentation, course
+>> text, lecture notes, and course staff.
+
+			     HELLO, PINTOS Again
+			     =============
+
+
+---- DATA STRUCTURES ----
+
+>> A1: Copy here the declaration of each new or changed `struct' or
+>> `struct' member, global or static variable, `typedef', or
+>> enumeration.  Identify the purpose of each in 25 words or less.
+>>  If none data struct is new, just skip this.
+
+---- ALGORITHMS ----
+
+>> A2: Please copy the output from the Bochs(or Qemu) when you run 'pintos -q run hello-pintos'. Or you can take a screenshoot of the output and submit the screenshoot along with this document.
+
+---- Questions -----
+
+>> Q1: How dose the function list_entry() work?
+>> Q2: What function should work when the PINTOS unblocks a thread?
+

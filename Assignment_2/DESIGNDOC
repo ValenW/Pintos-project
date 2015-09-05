@@ -1,0 +1,79 @@
+			+----------------------------+
+			|           SE223            |
+			|Assignment 2:Debuging Pintos|
+			|       DESIGN DOCUMENT      |
+			+----------------------------+
+				   
+---- Information ----
+
+>> Fill in the name and email address of you.
+
+王文茏  <1509563478@qq.com>
+
+---- PRELIMINARIES ----
+
+>> If you have any preliminary comments on your submission, notes for the
+>> TAs, or extra credit, please give them here.
+
+>> Please cite any offline or online sources you consulted while
+>> preparing your submission, other than the Pintos documentation, course
+>> text, lecture notes, and course staff.
+
+			     HELLO, PINTOS
+			     =============
+
+
+---- DATA STRUCTURES ----
+
+>> A1: Copy here the declaration of each new or changed `struct' or
+>> `struct' member, global or static variable, `typedef', or
+>> enumeration.  Identify the purpose of each in 25 words or less.
+>>  If none data struct is new, just skip this.
+
+---- ALGORITHMS ----
+
+>> A2: How to set GDB’s breakpoint at addresses, at functions and at file? What’s the
+>>> differences between the GDB’s ‘si’, ‘ni’, ’s’, ’n’ command?
+
+at addresses:   b *[addresses]
+at functions:   b function
+at file:        b [file]:[line]
+
+si, s:
+    s表示持续运行程序直到下一条源代码则停止，若有子程序的调用则会进入子程序内；
+    si则表示运行到下一条机器指令停止。
+ni, n:
+    n表示持续运行程序直到当前文件的下一条源代码则停止，若有子程序的调用则不会进入子程序内；
+    ni则表示运行到下一条机器指令停止，若是程序调用则会运行到程序返回。
+
+
+>> A3: Run ```pintos --gdb -- -q``` and connect to gdb in a new terminal. Set a breakpoint
+>>> at address ```0x7c00```, which is where the boot sector will be loaded(in file
+>>> loader.S). Continue execution until that breakpoint. Use GDB's si (Step Instruction)
+>>> command to trace into the Loader for a few more instructions, and try to guess what it
+>>> might be doing. No need to figure out all the details - just the general idea of what
+>>> the Loader is doing first.
+
+BIOS启动后，将loader.S汇编成的512字节的文件装入硬盘的第一个扇区，然后将ax, ds, ss, dx, al置零，
+sp设为0xf000，之后中断到0x14处继续执行。
+
+>>> A4: Set a breakpoint in function main and continue and then use GDB to trace through
+>>> until Pintos booting complete. Try to figure out the order of modules of kernel
+>>> initialization.
+
+可以看到pintos启动过程中依次调用了下列的初始化函数：
+bss_init
+thread_init
+console_init
+palloc_init
+malloc_init
+paging_init
+intr_init
+timer_init
+kbd_init
+input_init
+thread_start
+serial_init_queue
+timer_calibrate
+由各函数的名字可以大致看出pintos启动过程中初始化的顺序为：
+内存BBS段，线程，控制台，内存，时间控制，输入的初始化，线程启动

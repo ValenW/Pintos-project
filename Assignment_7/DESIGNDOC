@@ -1,0 +1,44 @@
+			+----------------------------+
+			|           SE223            |
+			| Assignment 5: Priority     |
+			|       DESIGN DOCUMENT      |
+			+----------------------------+
+				   
+---- Information ----
+
+>> Fill in the name and email address of you.
+
+王文茏 <wwl0816@qq.com>
+
+---- PRELIMINARIES ----
+
+>> If you have any preliminary comments on your submission, notes for the
+>> TAs, or extra credit, please give them here.
+
+>> Please cite any offline or online sources you consulted while
+>> preparing your submission, other than the Pintos documentation, course
+>> text, lecture notes, and course staff.
+
+			    Priority Donation
+			     =============
+
+
+---- DATA STRUCTURES ----
+
+thread.h
+...
+130 void priority_donate(void);
+131 void priority_set_back(void);
+...
+144 void max_pri_to_run(void)
+...
+
+
+---- ALGORITHMS ----
+
+
+>> A2: Explain the way that you implement nested donation.
+使用的方法是在捐赠的时候用while循环来做，每次递归都会对当前的进程正在等待的lock进行查看，如果有需要捐赠的情况则进行捐赠，直到无须捐赠则退出循环。另外由于嵌套捐赠时受捐赠的对象进程可能处于各种状态，它们的优先级改变会使得ready_list变为无序，故最终会有一次对ready_list的排序。
+
+>> A3: How do you implement priority_set_priority()? If you add new function, please explain your algorithm.
+这里需要根据当前进程的old_priority和priority进行判断。如果当前进程受过捐赠并且捐赠的priority比较高，则只改变old_priority，如果受过捐赠但受捐赠的priority比较低，则将old_priority和priority都设为新的值。如果未受过捐赠则直接赋值。

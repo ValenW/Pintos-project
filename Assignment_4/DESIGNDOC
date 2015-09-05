@@ -1,0 +1,38 @@
+			+----------------------------+
+			|           SE223            |
+			|Assignment 4: Alarm Clock   |
+			|       DESIGN DOCUMENT      |
+			+----------------------------+
+				   
+---- Information ----
+
+>> Fill in the name and email address of you.
+
+FirstName LastName <email@domain.example>
+
+---- PRELIMINARIES ----
+
+>> If you have any preliminary comments on your submission, notes for the
+>> TAs, or extra credit, please give them here.
+
+>> Please cite any offline or online sources you consulted while
+>> preparing your submission, other than the Pintos documentation, course
+>> text, lecture notes, and course staff.
+
+			     HELLO, PINTOS
+			     =============
+
+
+---- DATA STRUCTURES ----
+
+>> A1: Copy here the declaration of each new or changed `struct' or
+>> `struct' member, global or static variable, `typedef', or
+>> enumeration.  Identify the purpose of each in 25 words or less.
+>>  If none data struct is new, just skip this.
+
+---- ALGORITHMS ----
+
+>> A2: Why the origin implement in time_sleep() is a ‘busy waiting’? Is it always a busy >> waiting when somebody calls time_sleep()? Why?
+
+>> A3: How can you solve the problem that cause busy waiting?
+

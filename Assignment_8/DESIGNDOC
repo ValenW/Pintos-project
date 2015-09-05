@@ -1,0 +1,83 @@
+			+—————————————————————————————————+
+			|           SE223           	  |
+			| Assignment 7: Advanced Scheduler|
+			|       DESIGN DOCUMENT      	  |
+			+—————————————————————————————————+
+				   
+---- Information ----
+
+>> Fill in the name and email address of you.
+
+王文茏 <wwl0816@qq.com>
+
+---- PRELIMINARIES ----
+
+>> If you have any preliminary comments on your submission, notes for the
+>> TAs, or extra credit, please give them here.
+
+>> Please cite any offline or online sources you consulted while
+>> preparing your submission, other than the Pintos documentation, course
+>> text, lecture notes, and course staff.
+
+			  ADVANCED SCHEDULER
+			  ==================
+
+
+---- DATA STRUCTURES ----
+
+>> A1: Copy here the declaration of each new or changed `struct' or
+>> `struct' member, global or static variable, `typedef', or
+>> enumeration.  Identify the purpose of each in 25 words or less.
+>>  If none data struct is new, just skip this.
+
+---- ALGORITHMS ----
+
+
+>> A2: Suppose threads A, B, and C have nice values 0, 1, and 2.  Each
+>> has a recent_cpu value of 0.  Fill in the table below showing the
+>> scheduling decision and the priority and recent_cpu values for each
+>> thread after each given number of timer ticks:
+
+timer   recent_cpu    priority   thread
+ticks     A  B  C     A  B  C    to run   ready list
+-----    -- -- --    -- -- --    ------   ----------
+ 0       0  0  0     63  61 59     A        B, C
+ 4       4  0  0     62  61 59     A        B, C
+ 8       8  0  0     61  61 59     B        A, C
+ 12      8  4  0     61  60 59     A        B, C
+ 16      12 4  0     60  60 59     B        A, C
+ 20      12 8  0     60  59 59     A        C, B
+ 24      16 8  0     59  59 59     C        B, A
+ 28      16 8  4     59  59 58     B        A, C
+ 32      16 12 4     59  58 58     A        C, B
+ 36      20 12 4     58  58 58     C        B, A
+
+>> A3: Did any ambiguities in the scheduler specification make values
+>> in the table uncertain?  If so, what rule did you use to resolve
+>> them?  Does this match the behavior of your scheduler?
+
+当两个进程拥有相同的优先级时，按照进入ready_list的先后顺序被激活。
+
+			   SURVEY QUESTIONS
+			   ================
+
+Answering these questions is optional, but it will help us improve the
+course in future.  Feel free to tell us anything you
+want--these questions are just to spur your thoughts.  You may also
+choose to respond anonymously in the course evaluations at the end of
+the term.
+
+>> In your opinion, was this assignment, or any one of the three problems
+>> in it, too easy or too hard?  Did it take too long or too little time?
+
+>> Did you find that working on a particular part of the assignment gave
+>> you greater insight into some aspect of OS design?
+
+>> Is there some particular fact or hint we should give students in
+>> future to help them solve the problems?  Conversely, did you
+>> find any of our guidance to be misleading?
+
+>> Do you have any suggestions for the TAs to more effectively assist
+>> students, either for future or the remaining projects?
+
+>> Any other comments?
